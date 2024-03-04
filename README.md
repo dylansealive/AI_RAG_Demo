@@ -21,6 +21,23 @@
 2. 测试检索效果：问题检索回来的文本片段是否包含答案
 3. 测试大模型能力：给定问题和包含答案文本片段的前提下，大模型能不能正确回答问题
 
+## 环境部署
+1. python3.8以上
+2. `pip install requirements.txt`安装依赖
+3. docker部署Elasticsearch
+```shell
+#拉取Elasticsearch镜像
+docker pull elasticsearch:7.17.18
+#启动Elasticsearch实例
+docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.17.18
+```
+4. `.env_template` 更改为 `.env` 。替换其中的值为自己的。
+```
+OPENAI_API_KEY=""       #opanAI key
+OPENAI_BASE_URL=""      #openAI base url
+ERNIE_CLIENT_ID=""      #baidu app id
+ERNIE_CLIENT_SECRET=""  #baidu app secret
+```
 
 ## 关键词搜索
 
@@ -84,10 +101,6 @@ demo10.py
 demo20.py 
 2. 用户搜索结果，并生成回复
 demo21.py
-
-
-## 使用注意
-.env_template 更改为 .env 。替换其中的值为自己的。
 
 
 
